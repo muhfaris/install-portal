@@ -13,7 +13,3 @@ $button.addEventListener("click", () => {
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("service-worker.js");
 }
-
-window.onload = function () {
-  document.getElementById("installButton").click();
-};
