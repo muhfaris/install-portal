@@ -3,7 +3,7 @@ import { pwaInstallHandler } from "https://unpkg.com/pwa-install-handler@latest?
 const $button = document.querySelector("#installButton");
 
 pwaInstallHandler.addListener((canInstall) => {
-  $button.style.display = canInstall && "inline-block";
+  $button.style.display = canInstall ? "inline-block" : "none";
 });
 
 $button.addEventListener("click", () => {
@@ -13,3 +13,7 @@ $button.addEventListener("click", () => {
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("service-worker.js");
 }
+
+window.onload = function () {
+  document.getElementById("installButton").click();
+};
