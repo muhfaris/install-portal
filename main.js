@@ -1,6 +1,15 @@
-import { pwaInstallHandler } from 'https://unpkg.com/pwa-install-handler@latest?module'
+import { pwaInstallHandler } from "https://unpkg.com/pwa-install-handler@latest?module";
 
-pwaInstallHandler.install()
-if ('serviceWorker' in navigator) {
-	navigator.serviceWorker.register('service-worker.js')
+const $button = document.querySelector("#installButton");
+
+pwaInstallHandler.addListener((canInstall) => {
+  $button.style.display = canInstall && "inline-block";
+});
+
+$button.addEventListener("click", () => {
+  pwaInstallHandler.install();
+});
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
 }
